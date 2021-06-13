@@ -38,7 +38,7 @@ public :
 
 		ST[si] = min(ST[lsi], ST[rsi]);
 	}
-	void increase(int i, int newVal){
+	void update(int i, int newVal){
 		return updateUtil(0, 0, n - 1, i, newVal);
 	}
 
