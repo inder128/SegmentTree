@@ -48,18 +48,20 @@ public :
 	}
 
 
-	int getLeftmostNotLess (int si, int sl, int sr, int val) {
-		if(ST[si] < val) return -1;
+	int getLeftmostNotLess (int si, int sl, int sr, int ql, int qr, int val) {
+		if (sr < ql or qr < sl) return -1;
 
-		if(sl == sr) return sl;
+		if (ST[si] < val) return -1;
 
-		int ans = getLeftmostNotLess(lsi, sl, mid, val);
-		if(ans == -1){
-			ans = getLeftmostNotLess(rsi, mid + 1, sr, val);
+		if (sl == sr) return sl;
+
+		int ans = getLeftmostNotLess(lsi, sl, mid, ql, qr, val);
+		if (ans == -1) {
+			ans = getLeftmostNotLess(rsi, mid + 1, sr, ql, qr, val);
 		}
 		return ans;
 	}
-	int getLeftmostNotLess(int val){
-		return getLeftmostNotLess(0, 0, n - 1, val);
+	int getLeftmostNotLess (int ql, int qr, int val) {
+		return getLeftmostNotLess(0, 0, n - 1, ql, qr, val);
 	}
 };
